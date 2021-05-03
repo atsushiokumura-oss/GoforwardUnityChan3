@@ -21,11 +21,15 @@ public class CubeController : MonoBehaviour
         {
             Destroy (gameObject);
         }
-        GetComponent<AudioSource> ().volume = 0;
+        
     }
 
     public void OnCollisionEnter2D(Collision2D other)
     {
-        GetComponent<AudioSource> ().volume = (other.gameObject.tag == "CubePrefabTag" || other.gameObject.tag == "groundTag") ? 1 : 0;
+
+        if(other.gameObject.tag == "CubePrefabTag" || other.gameObject.tag == "groundTag")
+        {
+            GetComponent<AudioSource> ().Play();
+        }
     }
 }
